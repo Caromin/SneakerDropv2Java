@@ -1,3 +1,13 @@
 .active-link {
   color: black;
 }
+
+.active-header {
+  height: 375px;
+  background: url("https://stockx-assets.imgix.net/headers/home_2.png?auto=compress%2Cformat") no-repeat center;
+  background-size: cover;
+}
+
+.inactive-header {
+  background-color: #fff;
+}

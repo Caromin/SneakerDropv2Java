@@ -1,4 +1,4 @@
-<header>
+<header [ngClass]="{'active-header': route === true, 'inactive-header': route === false}">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
         <div class="d-flex flex-grow-1 justify-content-between">
             <div>
