@@ -11,9 +11,10 @@ import { Location } from '@angular/common';
 export class NavComponent implements OnInit {
   route: boolean;
 
+  // checking the location service inside of the router service
+  // if the path is empty then must be homepage and updates route variable true, else false
   constructor(location: Location, router: Router) {
     router.events.subscribe(val => {
-// tslint:disable-next-line: triple-equals
       if (location.path() !== '') {
         this.route = false;
       } else {

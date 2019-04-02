@@ -1,0 +1,6 @@
+.homeBanner2 {
+  height: 200px;
+  width: 100vw;
+  background: url("https://stockx-assets.imgix.net/appBanners/NYCpopupFEB_MobileBanner_hex_84ced41549730543735.jpg?auto=compress,format") no-repeat center;
+  background-size: cover;
+}

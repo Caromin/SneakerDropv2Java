@@ -1,3 +1,6 @@
-<p>
-  search works!
-</p>
+<div class="d-inline">
+  <form action="" class="form">
+    <input class="searchbar mr-2 pl-2" type="text" name="buyerSearch" [(ngModel)]="buyerSearch" placeholder="Search...">
+    <button type="submit" class="btn btn-success btn-height" (click)="onSubmit()">Search</button>
+  </form>
+</div>

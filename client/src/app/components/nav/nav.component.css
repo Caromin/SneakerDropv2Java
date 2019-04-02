@@ -11,3 +11,13 @@
 .inactive-header {
   background-color: #fff;
 }
+
+.bannerText {
+  font-size: 70px;
+  line-height: 1;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.test {
+  color: pink;
+}
