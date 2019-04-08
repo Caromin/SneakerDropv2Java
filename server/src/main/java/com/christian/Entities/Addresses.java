@@ -33,8 +33,6 @@ public class Addresses {
 	@Column(name="zipcode")
 	private Integer zipcode;
 	
-	@NotNull
-	@Column(name="userId")
 	@ManyToOne(optional=false)
 	@JoinColumn(name="userId", nullable=false, updatable=false, referencedColumnName="id")
 	private Users userId;

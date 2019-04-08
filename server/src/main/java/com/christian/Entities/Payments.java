@@ -16,8 +16,6 @@ public class Payments {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="userId")
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name="userId", nullable=false, updatable=false, referencedColumnName="id")
 	private Users userId;
@@ -37,7 +35,6 @@ public class Payments {
 	@Column(name="year")
 	@NotNull
 	private Integer year;
-	
 	
 	@Column(name="isActive", columnDefinition="boolean default true")
 	private Boolean isActive;

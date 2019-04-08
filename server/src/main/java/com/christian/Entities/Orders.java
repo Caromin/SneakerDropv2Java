@@ -16,14 +16,10 @@ public class Orders {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="userId")
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name="userId", nullable=false, updatable=false, referencedColumnName="id")
 	private Users userId;
 	
-	@Column(name="listingId")
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name="listingId", nullable=false, updatable=false, referencedColumnName="id")
 	private Listings listingId;
