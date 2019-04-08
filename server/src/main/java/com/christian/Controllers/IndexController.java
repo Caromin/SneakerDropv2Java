@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.christian.DAOServices.UserDAOService;
-import com.christian.Entities.Users;
+import com.christian.DAOServices.ProductsDAOService;
+import com.christian.Entities.Products;
 
 @RestController
 public class IndexController {
@@ -16,8 +17,12 @@ public class IndexController {
 	@Autowired
 	private UserDAOService userDaoService;
 	
+	@Autowired
+	private ProductsDAOService productsDaoService;
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/")
-	public List<Users> getUsers() {
-		return userDaoService.getAllUsers();
+	public List<Products> getRecentProducts() {
+		return productsDaoService.getRecentProducts();
 	}
+	
 }
