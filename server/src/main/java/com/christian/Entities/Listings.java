@@ -24,14 +24,10 @@ public class Listings {
 	@NotNull
 	private Integer size;
 	
-	@Column(name="productId")
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name="productId", nullable=false, updatable=false, referencedColumnName="id")
 	private Products productId;
 	
-	@Column(name="userId")
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name="userId", nullable=false, updatable=false, referencedColumnName="id")
 	private Users userId;
