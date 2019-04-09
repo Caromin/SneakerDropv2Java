@@ -4,3 +4,21 @@
   background: url("https://stockx-assets.imgix.net/appBanners/NYCpopupFEB_MobileBanner_hex_84ced41549730543735.jpg?auto=compress,format") no-repeat center;
   background-size: cover;
 }
+
+.productContainer {
+  width: 150px;
+  height: 150px;
+}
+
+.productImage {
+  height: 75px;
+  background-size: contain;  
+}
+
+.productText {
+  width: 150px;
+  height: 40px;
+  font-size: 14px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: black;
+}

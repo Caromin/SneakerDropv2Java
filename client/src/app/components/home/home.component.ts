@@ -7,10 +7,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
+  recentProducts;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/').subscribe((data) => console.log(data));
+    this.http.get('http://localhost:8080/').subscribe((data) =>  { this.recentProducts = data; });
   }
 
 }
