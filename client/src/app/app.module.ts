@@ -19,6 +19,7 @@ import { InfoComponent } from './components/info/info.component';
 import { SellSearchComponent } from './components/sell-search/sell-search.component';
 import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -36,15 +37,15 @@ import { ModalComponent } from './components/modal/modal.component';
     InfoComponent,
     SellSearchComponent,
     SellFormComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

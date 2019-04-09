@@ -7,7 +7,7 @@
 
 .productContainer {
   width: 150px;
-  height: 150px;
+  height: 175px;
 }
 
 .productImage {
@@ -21,4 +21,8 @@
   font-size: 14px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: black;
+}
+
+.noBorder {
+  border: none;
 }
