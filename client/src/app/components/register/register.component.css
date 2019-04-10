@@ -1,0 +1,7 @@
+#registerDiv {
+  width: 350px;
+  height: 300px;
+  display: inline-block;
+  border: solid 1px #DCDCDC;
+  border-radius: 10px;
+}

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { SellSearchComponent } from './components/sell-search/sell-search.compon
 import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ProductsService } from './services/products.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,12 @@ import { ProductsService } from './services/products.service';
     ModalComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
   ],
-  providers: [ProductsService],
+  providers: [ProductsService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

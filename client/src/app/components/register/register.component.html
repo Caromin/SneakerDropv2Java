@@ -1,3 +1,25 @@
-<p>
-  register works!
-</p>
+<div class="w-100">
+    <div class="mt-5 text-center align-content-center">
+        <h4 class="mb-2">SneakerDrop</h4>
+          <div id="registerDiv" class="text-left p-3 box-shadow">
+              <div>
+                  <div>
+                    <label for="newUser" class="btnText">Username</label>
+                  </div>
+                  <div>
+                    <input required type="text" class="w-100 form-control" placeholder="JohnSmitty123" [(ngModel)]="newUser" />
+                  </div>
+                  <div>
+                    <label class="btnText" for="password">Password</label>
+                  </div>
+                  <div>
+                    <input required type="password" class="w-100 form-control" [(ngModel)]="password"/>
+                  </div>
+                  <div class="text-center mt-5">
+                      <button class="w-100 btn btn-success btnText" type="submit" (click)="registerUser()">Create your SneakerDrop Account</button>
+                      <div><span class="btnText">Already have an account? </span><a class="signin w-100 btnText" >Sign in</a></div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>

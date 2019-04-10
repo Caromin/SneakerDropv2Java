@@ -1,0 +1,7 @@
+#loginDiv {
+  width: 350px;
+  height: 450px;
+  display: inline-block;
+  border: solid 1px #DCDCDC;
+  border-radius: 10px;
+}
