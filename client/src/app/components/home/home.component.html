@@ -3,6 +3,12 @@
     <div class="container  mt-5 box-shadow">
       <h4>RECENTLY ADDED PRODUCTS</h4>
         <div class="d-flex align-content-start flex-wrap">
+            <div class="productContainer" *ngFor="let item of recentProducts">
+              <img class="productImage" src="{{item.imageUrl}}" alt="{{item.productName}}">
+              <small class="productText d-block">{{item.productName}}</small>
+              <small>{{item.color}}</small>
+              <button name="viewItem" class="btn-link noBorder" type="submit" value="{{item.id}}">More Details</button>
+            </div>
         </div>
     </div>
 </main>

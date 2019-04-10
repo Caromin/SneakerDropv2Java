@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { InfoComponent } from './components/info/info.component';
 import { SellSearchComponent } from './components/sell-search/sell-search.component';
 import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -35,14 +37,15 @@ import { ModalComponent } from './components/modal/modal.component';
     InfoComponent,
     SellSearchComponent,
     SellFormComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

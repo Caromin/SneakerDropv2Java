@@ -45,4 +45,12 @@ public class Brands {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
 }
