@@ -13,9 +13,9 @@ import com.christian.Entities.Products;
 @RestController
 public class IndexController {
 
-	// lets JPA know dependency injection
-	@Autowired
-	private UserDAOService userDaoService;
+//	// lets JPA know dependency injection
+//	@Autowired
+//	private UserDAOService userDaoService;
 	
 	@Autowired
 	private ProductsDAOService productsDaoService;

@@ -18,7 +18,7 @@ public class ProductsDAOService {
 	public List<Products> getRecentProducts() {
 		
 		List<Products> products = new ArrayList<>();		
-		productRepository.findAll().forEach(products:: add);
+		productRepository.findAllOrderByIdDesc().forEach(products:: add);
 		
 		return products;
 	}
