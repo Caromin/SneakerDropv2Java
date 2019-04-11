@@ -1,30 +1,57 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Injectable } from '@angular/core';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { ProductsService } from 'src/app/services/products.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let service: ProductsService;
+  let spy: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       imports: [HttpClientTestingModule],
-      providers: [ProductsService, HttpClient, HttpClientModule]
+      providers: [ProductsService]
     })
     .compileComponents();
+
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    service = service;
+    component = new HomeComponent(service);
+
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  // still not working properly, look into mocking the service, observable
+  it('return 1 object', () => {
+    const dummyData = {
+      id: 5,
+      productName: 'The North Face Mountain Parka',
+      description: 'The true hype beast of Asians and the West Coast!',
+      color: 'Blue/White',
+      imageUrl: 'http://i.imgur.com/br4qCej.jpg',
+      brandId: {
+      id: 3,
+      brand: 'Supreme',
+      isActive: true
+      },
+      typeId: {
+      id: 5,
+      type: 'Outerwear',
+      isActive: true
+      },
+      isActive: true
+    };
+    spy = spyOn(service, 'getRecentProducts').and.returnValue(dummyData);
+    expect(component.recentProducts).toBeGreaterThan(0);
+    expect(component.ngOnInit).toHaveBeenCalled();
   });
 });
