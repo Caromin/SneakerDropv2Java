@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -21,6 +21,7 @@ import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ProductsService } from './services/products.service';
 import { StorageService } from './services/storage.service';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,9 @@ import { StorageService } from './services/storage.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [ProductsService, StorageService],
+  providers: [ProductsService, StorageService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

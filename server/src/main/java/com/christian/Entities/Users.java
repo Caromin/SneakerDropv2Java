@@ -25,14 +25,15 @@ public class Users {
 	@Column(name="isActive", columnDefinition="boolean default true")
 	private Boolean isActive;
 
-	public Users() {}
+	public Users() {
+		this.isActive = true;
+	}
 	
 	public Users(Integer id, String username, String password, Boolean isActive) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.isActive = isActive;
 	}
 
 	public Integer getId() {

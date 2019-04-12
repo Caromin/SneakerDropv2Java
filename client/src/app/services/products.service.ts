@@ -11,6 +11,6 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getRecentProducts(): Observable<any> {
-    return this.http.get(`${this.ROOT_URL} + /`);
+    return this.http.get(`${this.ROOT_URL}/recent`);
   }
 }

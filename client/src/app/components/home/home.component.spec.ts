@@ -8,7 +8,6 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let service: ProductsService;
-  let spy: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,33 +24,36 @@ describe('HomeComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    service = service;
-    component = new HomeComponent(service);
-
   });
 
-  // still not working properly, look into mocking the service, observable
   it('return 1 object', () => {
-    const dummyData = {
-      id: 5,
-      productName: 'The North Face Mountain Parka',
-      description: 'The true hype beast of Asians and the West Coast!',
-      color: 'Blue/White',
-      imageUrl: 'http://i.imgur.com/br4qCej.jpg',
-      brandId: {
-      id: 3,
-      brand: 'Supreme',
-      isActive: true
-      },
-      typeId: {
-      id: 5,
-      type: 'Outerwear',
-      isActive: true
-      },
-      isActive: true
-    };
-    spy = spyOn(service, 'getRecentProducts').and.returnValue(dummyData);
-    expect(component.recentProducts).toBeGreaterThan(0);
-    expect(component.ngOnInit).toHaveBeenCalled();
+    inject([HttpTestingController, ProductsService],
+      (httpMock: HttpTestingController, service: ProductsService) => {
+        service.getRecentProducts().subscribe(data => {
+          expect(data.length).toBe(3);
+        });
+
+        const req = httpMock.expectOne(`${service.ROOT_URL}/recent`);
+        expect(req.request.method).toEqual('GET');
+
+        req.flush({data: {
+          id: 5,
+          productName: 'The North Face Mountain Parka',
+          description: 'The true hype beast of Asians and the West Coast!',
+          color: 'Blue/White',
+          imageUrl: 'http://i.imgur.com/br4qCej.jpg',
+          brandId: {
+          id: 3,
+          brand: 'Supreme',
+          isActive: true
+          },
+          typeId: {
+          id: 5,
+          type: 'Outerwear',
+          isActive: true
+          },
+          isActive: true
+        }});
+      });
   });
 });

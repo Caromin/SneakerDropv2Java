@@ -1,8 +1,5 @@
 package com.christian.DAOServices;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +13,9 @@ public class UserDAOService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public List<Users> getAllUsers() {
-		List<Users> users = new ArrayList<>();
-		userRepository.findAll()
-			.forEach(item -> users.add(item));
-		return users;
+	public void addUser(Users user) {
+		userRepository.save(user);
 	}
+	
+	
 }
