@@ -10,8 +10,9 @@
           <input required type="text" formControlName="username" class="w-100 form-control" placeholder="JohnSmitty123"/>
           <small *ngIf="newUser.get('username')?.errors?.minlength && newUser.get('username')?.dirty || 
             newUser.get('username')?.errors?.required && newUser.get('username')?.dirty" class="text-danger tinyText">
-            Required length between 3 to 15.
+            Required length between 6 and 15.
           </small>
+          <!-- <small class="text-danger tinyText" [hidden]="[(ngModel)]='unique'">This username already exists</small> -->
         </div>
         <div>
           <label class="btnText" for="password" >Password</label>

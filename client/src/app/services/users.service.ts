@@ -20,8 +20,11 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   addUser(user: any): Observable<any> {
-    console.log(JSON.stringify(user));
     const payload = JSON.stringify(user);
     return this.http.post<any>(`${this.ROOT_URL}/addUser`, payload, httpOptions);
+  }
+
+  checkForUniqueId(): Observable<any> {
+    return this.http.get<string>(`${this.ROOT_URL}/users`);
   }
 }

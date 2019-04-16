@@ -23,6 +23,7 @@ public class IndexController {
 	@Autowired
 	private ProductsDAOService productsDaoService;
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value = "/recent")
 	public List<Products> getRecentProducts() {
 		return productsDaoService.getRecentProducts();
@@ -31,7 +32,12 @@ public class IndexController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST, value = "/addUser")
 	public void addUser(@RequestBody Users user) {
-		Users activeUser = new Users();
-		userDaoService.addUser(activeUser);
+		userDaoService.addUser(user);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(method = RequestMethod.GET, value = "/users")
+	public List<String> findAllUsers() {
+		return userDaoService.findAllUsers();
 	}
 }
