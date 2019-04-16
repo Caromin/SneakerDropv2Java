@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SearchComponent } from './components/search/search.component';
+import { MessageHandlerComponent } from './components/message-handler/message-handler.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,7 +17,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         NavComponent,
-        SearchComponent
+        SearchComponent,
+        MessageHandlerComponent
       ],
     }).compileComponents();
   }));

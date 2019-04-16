@@ -32,8 +32,8 @@ public class Users {
 	public Users(Integer id, String username, String password, Boolean isActive) {
 		super();
 		this.id = id;
-		this.username = username;
-		this.password = password;
+		this.username = username.trim();
+		this.password = password.trim();
 	}
 
 	public Integer getId() {
@@ -49,7 +49,7 @@ public class Users {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.username = username.trim();
 	}
 
 	public String getPassword() {
@@ -57,7 +57,7 @@ public class Users {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password.trim();
 	}
 
 	public Boolean getIsActive() {

@@ -21,7 +21,7 @@ describe('UsersService', () => {
     expect(service).toBeTruthy();
   });
 
-  fit('should add a new user to the user table', () => {
+  it('should add a new user to the user table', () => {
     const dummyUser: User = {
       id: 3,
       username: 'helloDummyData',

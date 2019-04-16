@@ -22,6 +22,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ProductsService } from './services/products.service';
 import { StorageService } from './services/storage.service';
 import { UsersService } from './services/users.service';
+import { MessageHandlerComponent } from './components/message-handler/message-handler.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UsersService } from './services/users.service';
     SellSearchComponent,
     SellFormComponent,
     ModalComponent,
+    MessageHandlerComponent,
   ],
   imports: [
     FormsModule,
