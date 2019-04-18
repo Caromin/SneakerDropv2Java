@@ -18,7 +18,7 @@ export class MessageHandlerComponent implements OnInit {
 
   ngOnInit() {}
 
-  closeMessage(message: string) {
+  closeMessage(message: string): void {
     this.storageService.updateErrorMessage(message);
     console.log(this.errorMessage);
   }
