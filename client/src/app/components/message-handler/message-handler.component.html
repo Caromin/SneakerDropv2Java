@@ -1,5 +1,4 @@
-<div class="container btnText text-left border pt-3">
-  <div *ngFor="let i of errorMessage">
-    <p>{{ i }}</p>
-  </div>
+<div *ngFor="let i of errorMessage" class="container btnText text-left border p-2 m-2 d-flex justify-content-between">
+  <div class="pt-2">{{ i }}</div>
+  <button type="button" (click)="closeMessage(i)" class="btn btn-link">x</button>
 </div>

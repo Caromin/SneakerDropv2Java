@@ -35,4 +35,15 @@ export class StorageService {
   public setErrorMessage(errorMessage: string[]): void {
     this.errorMessage.next(errorMessage);
   }
+
+  public updateErrorMessage(message: string): void {
+    const newArr: string[] = new Array();
+
+    this.errorMessage.value.forEach(index => {
+      if (index !== message) {
+        newArr.push(index);
+      }
+    });
+    this.errorMessage.next(newArr);
+  }
 }
