@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   newUser: FormGroup;
   unique: boolean;
 
-  constructor(private formBuilder: FormBuilder, private usersService: UsersService) { }
+  constructor(private formBuilder: FormBuilder, private usersService: UsersService, private router: Router) { }
 
   ngOnInit() {
     this.newUser = this.formBuilder.group({
@@ -33,8 +34,9 @@ export class RegisterComponent implements OnInit {
           }
         });
         this.usersService.addUser(this.newUser.value).subscribe(() => {
-          // can do additional tasks after adding user here
         });
+        this.router.navigateByUrl('/login');
+        return null;
       });
     }
   }
