@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-message-handler',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageHandlerComponent implements OnInit {
 
-  constructor() { }
+  errorMessage: string[];
+  testMessage: string[] = ['This is just a test sentence', 'This is just a second test sentence'];
 
-  ngOnInit() {
+  constructor(private storageService: StorageService) {
+    this.storageService.getErrorMessage().subscribe(results => {
+      this.errorMessage = results;
+    });
+
+    this.storageService.setErrorMessage(this.testMessage);
+    console.log(this.errorMessage);
+
   }
+
+  ngOnInit() {}
 
 }
