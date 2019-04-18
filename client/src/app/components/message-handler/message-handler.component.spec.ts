@@ -27,7 +27,7 @@ describe('MessageHandlerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should return an empty array', () => {
+  it('should return undefined', () => {
     const dummyString = 'used for test';
     expect(component.closeMessage(dummyString)).toBe(undefined);
   });

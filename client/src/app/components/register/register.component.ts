@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   newUser: FormGroup;
-  unique: boolean;
+unique: boolean;
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService, private router: Router) { }
 

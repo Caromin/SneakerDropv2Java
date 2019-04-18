@@ -27,4 +27,9 @@ export class UsersService {
   checkForUniqueId(): Observable<any> {
     return this.http.get<string>(`${this.ROOT_URL}/users`);
   }
+
+  checkForExistingUser(user): Observable<any> {
+    const payload = JSON.stringify(user);
+    return this.http.post<any>(`${this.ROOT_URL}/compare`, payload, httpOptions);
+  }
 }

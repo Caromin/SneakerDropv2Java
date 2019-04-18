@@ -26,6 +26,11 @@ public class UserDAOService {
 			users.add(index.getUsername());
 		});
 		return users;
+	}
+
+	public Boolean findByUsername(Users user) {
+		Users searchResult = userRepository.findByUsername(user.getUsername());
+		return null;
 	};
 		
 }

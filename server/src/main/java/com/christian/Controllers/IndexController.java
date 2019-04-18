@@ -40,4 +40,10 @@ public class IndexController {
 	public List<String> findAllUsers() {
 		return userDaoService.findAllUsers();
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(method = RequestMethod.POST, value = "/compare")
+	public Boolean findByUsername(@RequestBody Users user) {
+		return userDaoService.findByUsername(user);
+	}
 }
