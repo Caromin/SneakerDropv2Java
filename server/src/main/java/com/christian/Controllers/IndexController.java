@@ -43,7 +43,7 @@ public class IndexController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST, value = "/compare")
-	public Boolean findByUsername(@RequestBody Users user) {
+	public Users findByUsername(@RequestBody Users user) {
 		return userDaoService.findByUsername(user);
 	}
 }

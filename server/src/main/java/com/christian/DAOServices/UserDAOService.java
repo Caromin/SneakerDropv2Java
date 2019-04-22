@@ -28,9 +28,7 @@ public class UserDAOService {
 		return users;
 	}
 
-	public Boolean findByUsername(Users user) {
-		Users searchResult = userRepository.findByUsername(user.getUsername());
-		return null;
+	public Users findByUsername(Users user) {
+		return userRepository.findByUsername(user);
 	};
-		
 }
