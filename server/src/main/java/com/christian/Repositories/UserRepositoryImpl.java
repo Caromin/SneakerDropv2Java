@@ -3,6 +3,7 @@ package com.christian.Repositories;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.apache.catalina.User;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 
 import com.christian.Entities.Users;
 
@@ -21,20 +23,25 @@ public class UserRepositoryImpl implements UserRepository{
 	@Override
 	public Users findByUsername(Users user) {
 		
+		// Query does not need Select statement and quotes around parameter passed
 		StringBuilder query = new StringBuilder();
-		// query.append("SELECT * ");
 		query.append("from " + Users.class.getSimpleName());
 		query.append(" where ");
-		// had to wrap the username in quotes, because it wasnt reading it as a string
 		query.append("username = '" + user.getUsername() + "'");		
 		
-		return em.createQuery(query.toString(), Users.class).getSingleResult();
+		try {
+			return em.createQuery(query.toString(), Users.class).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public List<Users> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder query = new StringBuilder();
+		query.append("from " + Users.class.getSimpleName());
+		
+		return em.createQuery(query.toString(), Users.class).getResultList();
 	}
 
 	@Override
