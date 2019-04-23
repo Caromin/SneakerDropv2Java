@@ -27,11 +27,14 @@ public class UserRepositoryImpl implements UserRepository{
 		StringBuilder query = new StringBuilder();
 		query.append("from " + Users.class.getSimpleName());
 		query.append(" where ");
-		query.append("username = '" + user.getUsername() + "'");		
+		query.append("username = '" + user.getUsername() + "' ");		
+		query.append("and password = '" + user.getPassword() + "' ");		
 		
 		try {
 			return em.createQuery(query.toString(), Users.class).getSingleResult();
 		} catch (NoResultException e) {
+			return null;
+		} catch (Exception e) {
 			return null;
 		}
 	}

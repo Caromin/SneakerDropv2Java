@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
   compareUser() {
     const user = this.user.value;
     this.userService.checkForExistingUser(user).subscribe(result => {
-      if (result === false) {
+
+      if (result === null) {
         this.message = ['The username or the password was incorrect'];
         this.updateMessage(this.message);
       } else {
