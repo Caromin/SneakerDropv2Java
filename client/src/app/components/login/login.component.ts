@@ -3,7 +3,6 @@ import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit {
 
   compareUser(): boolean {
     const user = this.user.value;
-    userInfo(user);
     this.userService.checkForExistingUser(user).subscribe(result => {
 
       if (result === null) {
@@ -67,7 +65,7 @@ export class LoginComponent implements OnInit {
       this.updateMessage(this.message);
       return false;
     });
-    return false;
+    return true;
   }
 
   updateMessage(messages: string[]) {

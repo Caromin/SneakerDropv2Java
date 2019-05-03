@@ -1,28 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
-import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { async, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+
 import { UsersService } from 'src/app/services/users.service';
-import { Observable, of } from 'rxjs';
+import { LoginComponent } from './login.component';
 
-// class MockService {
-//   checkForExistingUser(user) {
-//     return of({ username: 'meowmix', password: 'meowmix'});
-//   }
-// }
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let userService: UsersService;
   let mockUser: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule],
-      providers: [UsersService]
+      declarations: [
+        LoginComponent
+      ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule
+      ],
+      providers: [
+        UsersService
+      ]
     })
     .compileComponents();
   }));
@@ -44,9 +48,15 @@ fdescribe('LoginComponent', () => {
     expect(component.getUser()).toEqual(mockUser);
   });
 
-  fit('compare user should redirect to userpage on success or error message if failure', () => {
+  it('compare user should redirect to userpage on success or error message if failure', () => {
     component.ngOnInit();
+    // listens for the user service
     spyOn(userService, 'checkForExistingUser').and.returnValue(of({ username: 'meowmix', password: 'meowmix'}));
-    expect(component.compareUser()).toEqual(false);
+    // listens for compareUser to be called through
+    spyOn(component, 'compareUser').and.callThrough();
+    // expects function to return true
+    expect(component.compareUser()).toBe(true);
+    // expects function to have been called
+    expect(component.compareUser).toHaveBeenCalled();
   });
 });

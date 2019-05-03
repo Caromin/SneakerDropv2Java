@@ -1,0 +1,17 @@
+.userPageDiv {
+  height: 125px;
+  border: solid 1px #DCDCDC;
+  border-radius: 5px;
+  margin: 10px;
+  width: 275px;
+  color: #000;
+}
+
+.userText {
+  width: 130px;
+}
+
+.resizeImage {
+  height: 120px;
+  width: 96px;
+}
