@@ -3,6 +3,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private formBuilder: FormBuilder,
     private userService: UsersService,
+    private authService: AuthGuardService,
     private router: Router) { }
 
   // error shows at the start, because there are validators onInit
@@ -50,11 +52,13 @@ export class LoginComponent implements OnInit {
       if (result === null) {
         this.message = ['The username or the password was incorrect'];
         this.updateMessage(this.message);
+        this.authService.checkLogin(false);
 
         return false;
       } else {
         this.message = [];
         this.updateMessage(this.message);
+        this.authService.checkLogin(true);
         this.router.navigateByUrl('/user');
 
         return true;

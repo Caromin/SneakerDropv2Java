@@ -11,6 +11,7 @@ import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { SellSearchComponent } from './components/sell-search/sell-search.component';
 import { UpdateComponent } from './components/update/update.component';
 import { UserComponent } from './components/user/user.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: 'cart', component: CartComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'sell-form', component: SellFormComponent},
   {path: 'sell-search', component: SellSearchComponent},
   {path: 'update', component: UpdateComponent},
-  {path: 'user', component: UserComponent},
+  {path: 'user', component: UserComponent, canActivate: [AuthGuardService]},
   {path: '', component: HomeComponent}
 ];
 
