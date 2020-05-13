@@ -21,6 +21,7 @@ export class UsersService {
 
   addUser(user: any): Observable<any> {
     const payload = JSON.stringify(user);
+    console.log(user);
     return this.http.post<any>(`${this.ROOT_URL}/addUser`, payload, httpOptions);
   }
 
