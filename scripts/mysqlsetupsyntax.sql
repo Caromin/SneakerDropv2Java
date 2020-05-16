@@ -4,6 +4,7 @@ create table `practiceDB`.`Users` (
 `id` int not null auto_increment,
 `username` varchar(255) not null,
 `password` varchar(255) not null,
+`isActive` tinyint not null default 1,
 primary key (`id`)
 );
 
