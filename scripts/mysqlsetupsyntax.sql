@@ -21,7 +21,7 @@ primary key (`id`)
 create table `practiceDB`.`Payments` (
 `id` int not null auto_increment,
 `userId` int not null,
-`number` long not null,
+`number` bigint not null,
 `securitycode` int not null,
 `month` int not null,
 `year` int not null,
