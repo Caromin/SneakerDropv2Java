@@ -6,19 +6,31 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import org.apache.catalina.User;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
-
 import com.christian.Entities.Users;
 
 public class UserRepositoryImpl implements UserRepository{
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	public boolean findUsernameExists(String username) {
+		StringBuilder query = new StringBuilder();
+		query.append("from " + Users.class.getSimpleName());
+		query.append(" where ");
+		query.append("username = '" + username + "' ");
+		
+		List<Users> results = em.createQuery(query.toString(), Users.class).getResultList();
+		
+		if (results.size() == 0) {
+			return true;
+		} else {
+			return false;			
+		}
+	}
 
 	@Override
 	public Users findByUsername(Users user) {

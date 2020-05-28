@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.message = [];
         this.updateMessage(this.message);
+        this.validatePassword(result);
         this.authService.checkLogin(true);
         this.router.navigateByUrl('/user');
 
@@ -70,6 +71,15 @@ export class LoginComponent implements OnInit {
       return false;
     });
     return true;
+  }
+
+  validatePassword(result: any): boolean {
+    console.log(result.password);
+    if (this.user.value.password !== result.password) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   updateMessage(messages: string[]) {

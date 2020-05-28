@@ -21,15 +21,15 @@ export class UsersService {
 
   addUser(user: any): Observable<any> {
     const payload = JSON.stringify(user);
-    console.log(user);
     return this.http.post<any>(`${this.ROOT_URL}/addUser`, payload, httpOptions);
   }
 
-  checkForUniqueId(): Observable<any> {
-    return this.http.get<string>(`${this.ROOT_URL}/users`);
+  checkForUniqueUsername(username: string): Observable<any> {
+    const payload = JSON.stringify(username);
+    return this.http.post<string>(`${this.ROOT_URL}/users/exists`, payload, httpOptions);
   }
 
-  checkForExistingUser(user): Observable<any> {
+  checkForExistingUser(user: any): Observable<any> {
     const payload = JSON.stringify(user);
     return this.http.post<any>(`${this.ROOT_URL}/compare`, payload, httpOptions);
   }

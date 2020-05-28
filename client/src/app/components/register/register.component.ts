@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   newUser: FormGroup;
-unique: boolean;
+  username: string;
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService, private router: Router) { }
 
@@ -22,21 +22,15 @@ unique: boolean;
   }
 
   registerUser() {
-    // resets value
-    this.unique = true;
-    const newArr = new Array<string>();
+    this.username = this.newUser.value.username.trim();
+
     if (this.newUser.valid) {
-      this.usersService.checkForUniqueId().subscribe((results) => {
-        newArr.push(results);
-        newArr.forEach(index => {
-          if (this.newUser.value.username === index) {
-            return this.unique = false;
-          }
-        });
-        this.usersService.addUser(this.newUser.value).subscribe(() => {
-        });
-        this.router.navigateByUrl('/login');
-        return null;
+      this.usersService.checkForUniqueUsername(this.username).subscribe((result) => {
+        console.log(`this is the result: ${result}` );
+        // this.usersService.addUser(this.newUser.value).subscribe(() => {
+        // });
+        // this.router.navigateByUrl('/login');
+        // return null;
       });
     }
   }

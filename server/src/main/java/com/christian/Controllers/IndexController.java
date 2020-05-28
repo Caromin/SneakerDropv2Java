@@ -18,9 +18,6 @@ public class IndexController {
 
 	// lets JPA know dependency injection
 	@Autowired
-	private UserDAOService userDaoService;
-	
-	@Autowired
 	private ProductsDAOService productsDaoService;
 	
 	@CrossOrigin(origins = "*")
@@ -28,22 +25,5 @@ public class IndexController {
 	public List<Products> getRecentProducts() {
 		return productsDaoService.getRecentProducts();
 	}
-	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(method = RequestMethod.POST, value = "/addUser")
-	public void addUser(@RequestBody Users user) {
-		userDaoService.addUser(user);
-	}
-	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(method = RequestMethod.GET, value = "/users")
-	public List<String> findAllUsers() {
-		return userDaoService.findAllUsers();
-	}
-	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(method = RequestMethod.POST, value = "/compare")
-	public Users findByUsername(@RequestBody Users user) {
-		return userDaoService.findByUsername(user);
-	}
+
 }
