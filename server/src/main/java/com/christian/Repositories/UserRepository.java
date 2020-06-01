@@ -8,4 +8,5 @@ import com.christian.Entities.Users;
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer>, CustomUserRepository{
 
+	public boolean findUsernameExists(String username);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -17,18 +18,20 @@ public class UserRepositoryImpl implements UserRepository{
 	@PersistenceContext
 	private EntityManager em;
 	
+	@Override
 	public boolean findUsernameExists(String username) {
-		StringBuilder query = new StringBuilder();
-		query.append("from " + Users.class.getSimpleName());
-		query.append(" where ");
-		query.append("username = '" + username + "' ");
 		
-		List<Users> results = em.createQuery(query.toString(), Users.class).getResultList();
+		String paramQuery = "SELECT * FROM Users u WHERE u.username = :user ";
+		Query query = em.createNativeQuery(paramQuery, Users.class);
+		query.setParameter("user", username);
+
+		@SuppressWarnings("unchecked")
+		List<Users> results = query.getResultList();
 		
-		if (results.size() == 0) {
+		if (results.size() > 0) {
 			return true;
 		} else {
-			return false;			
+			return false;
 		}
 	}
 

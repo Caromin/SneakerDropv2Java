@@ -25,8 +25,7 @@ export class UsersService {
   }
 
   checkForUniqueUsername(username: string): Observable<any> {
-    const payload = JSON.stringify(username);
-    return this.http.post<string>(`${this.ROOT_URL}/users/exists`, payload, httpOptions);
+    return this.http.post<string>(`${this.ROOT_URL}/users/exists`, username, httpOptions);
   }
 
   checkForExistingUser(user: any): Observable<any> {
