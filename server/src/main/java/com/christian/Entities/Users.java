@@ -24,6 +24,9 @@ public class Users {
 	
 	@Column(name="isActive", columnDefinition="boolean default true")
 	private Boolean isActive;
+	
+	@Column(name="saltValue")
+	private String saltValue;
 
 	public Users() {
 		this.isActive = true;
@@ -68,5 +71,12 @@ public class Users {
 		this.isActive = isActive;
 	}
 	
+	public String getSaltValue() {
+		return saltValue;
+	}
+	
+	public void setSaltValue(String saltValue) {
+		this.saltValue = saltValue;
+	}
 	
 }

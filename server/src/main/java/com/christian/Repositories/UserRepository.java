@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.christian.Entities.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, Integer>, CustomUserRepository{
+public interface UserRepository extends JpaRepository<Users, Integer>, UserRepositoryCustom {
 
-	public boolean findUsernameExists(String username);
 }

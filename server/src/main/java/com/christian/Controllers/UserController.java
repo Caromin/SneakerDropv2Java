@@ -18,8 +18,14 @@ public class UserController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST, value = "/addUser")
-	public void addUser(@RequestBody Users user) {
-		userDaoService.addUser(user);
+	public boolean addUser(@RequestBody Users user) {
+		try {
+			userDaoService.addUser(user);
+			return true;
+			
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	@CrossOrigin(origins = "*")
@@ -28,9 +34,9 @@ public class UserController {
 		return userDaoService.checkIfExists(username.trim());
 	}
 	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(method = RequestMethod.POST, value = "/compare")
-	public Users findByUsername(@RequestBody Users user) {
-		return userDaoService.findByUsername(user);
-	}
+//	@CrossOrigin(origins = "*")
+//	@RequestMapping(method = RequestMethod.POST, value = "/compare")
+//	public Users findByUsername(@RequestBody Users user) {
+//		return userDaoService.findByUsername(user);
+//	}
 }

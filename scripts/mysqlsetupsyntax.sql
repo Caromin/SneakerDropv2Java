@@ -68,3 +68,5 @@ create table `practiceDB`.`Orders` (
 primary key(`id`)
 );
 
+alter table `practiceDB`.`Users`
+add hashKey varchar(255)

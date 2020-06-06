@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,10 +10,14 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  newUser: FormGroup;
-  username: string;
+  private newUser: FormGroup;
+  private username: string;
+  private message: string[];
 
-  constructor(private formBuilder: FormBuilder, private usersService: UsersService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, 
+    private usersService: UsersService, 
+    private router: Router,
+    private storageService: StorageService) { }
 
   ngOnInit() {
     this.newUser = this.formBuilder.group({
@@ -23,14 +28,30 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     this.username = this.newUser.value.username.trim();
+    this.storageService.setErrorMessage([]);
 
     if (this.newUser.valid) {
       this.usersService.checkForUniqueUsername(this.username).subscribe((result) => {
-        console.log(`this is the result: ${result}` );
-        // this.usersService.addUser(this.newUser.value).subscribe(() => {
-        // });
-        // this.router.navigateByUrl('/login');
-        // return null;
+        // true means already exists
+        if (result) {
+          this.message = ["Username already exists!"];
+          console.log(this.message);
+          this.storageService.setErrorMessage(this.message);
+        } else {
+          this.usersService.addUser(this.newUser.value).subscribe((result) => {
+            // true means successfully saved
+            if (result) {
+              this.message = ["User successfully saved"];
+              console.log(this.message);
+              this.storageService.setErrorMessage(this.message);
+              setTimeout(() => this.router.navigateByUrl('/login'),2500);
+            } else {
+              this.message = ["An Error occured while trying to save user"];
+              console.log(this.message);
+              this.storageService.setErrorMessage(this.message);
+            }
+          });
+        }
       });
     }
   }
