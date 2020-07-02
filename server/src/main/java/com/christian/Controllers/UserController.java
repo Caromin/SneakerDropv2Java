@@ -34,9 +34,13 @@ public class UserController {
 		return userDaoService.checkIfExists(username.trim());
 	}
 	
-//	@CrossOrigin(origins = "*")
-//	@RequestMapping(method = RequestMethod.POST, value = "/compare")
-//	public Users findByUsername(@RequestBody Users user) {
-//		return userDaoService.findByUsername(user);
-//	}
+	@CrossOrigin(origins = "*")
+	@RequestMapping(method = RequestMethod.POST, value = "/compare")
+	public Users findByUsername(@RequestBody Users user) {
+		try {
+			return userDaoService.findByUsername(user);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

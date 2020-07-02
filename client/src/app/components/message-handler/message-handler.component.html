@@ -2,3 +2,7 @@
   <span class="pt-2 text-danger align-middle">{{ i }}</span>
   <button type="button" (click)="closeMessage(i)" class="btn btn-link text-danger">x</button>
 </div>
+<div *ngFor="let i of successMessage" class="container btnText text-left border border-success m-2 d-flex justify-content-between">
+  <span class="pt-2 text-success align-middle">{{ i }}</span>
+  <button type="button" (click)="closeMessage(i)" class="btn btn-link text-success">x</button>
+</div>

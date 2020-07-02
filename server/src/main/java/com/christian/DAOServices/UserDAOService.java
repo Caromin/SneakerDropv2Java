@@ -16,11 +16,19 @@ public class UserDAOService {
 	
 	@Autowired
 	private PasswordHashing passwordHashing;
+	
+	Users result;
+	String dbSalt;
+	String dbPassword;
 
 	public void addUser(Users user) {
 		Object[] hashObject = this.passwordHashing.generateHash(user.getPassword());
-		user.setPassword(hashObject[1].toString());
-		user.setSaltValue(hashObject[0].toString());
+		
+		if (hashObject != null) {
+			user.setPassword(hashObject[1].toString());
+			user.setSaltValue(hashObject[0].toString());			
+		}
+		
 		userRepository.save(user);
 	}
 	
@@ -28,7 +36,23 @@ public class UserDAOService {
 		return userRepository.findUsernameExists(username);
 	}
 
-//	public Users findByUsername(Users user) {
-//		return userCustom.findByUsername(user);
-//	};
+	public Users findByUsername(Users user) {
+		try {
+			this.result = userRepository.findByUsername(user.getUsername());			
+		} catch (Exception e) {
+			this.result = null;
+		}
+		
+		if (result != null) {
+			this.dbSalt = result.getSaltValue();
+			this.dbPassword = result.getPassword();
+			if (PasswordHashing.checkPasswordHash(this.dbSalt, user.getPassword(), this.dbPassword)) {
+				return result;
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	};
 }

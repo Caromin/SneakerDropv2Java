@@ -9,6 +9,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class MessageHandlerComponent implements OnInit {
 
   errorMessage: string[];
+  successMessage: string[];
 
   constructor(private storageService: StorageService) {
     this.storageService.getErrorMessage().subscribe(results => {
@@ -20,7 +21,6 @@ export class MessageHandlerComponent implements OnInit {
 
   closeMessage(message: string): void {
     this.storageService.updateErrorMessage(message);
-    console.log(this.errorMessage);
   }
 
 }

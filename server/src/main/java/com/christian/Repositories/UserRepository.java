@@ -7,5 +7,6 @@ import com.christian.Entities.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer>, UserRepositoryCustom {
-
+	Users findByUsername(String username);
+	
 }

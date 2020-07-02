@@ -48,21 +48,15 @@ export class LoginComponent implements OnInit {
   compareUser(): boolean {
     const user = this.user.value;
     this.userService.checkForExistingUser(user).subscribe(result => {
-
       if (result === null) {
-        this.message = ['The username or the password was incorrect'];
+        this.message = ['There was an issue with the username or password'];
         this.updateMessage(this.message);
         this.authService.checkLogin(false);
-
-        return false;
       } else {
         this.message = [];
         this.updateMessage(this.message);
-        this.validatePassword(result);
         this.authService.checkLogin(true);
         this.router.navigateByUrl('/user');
-
-        return true;
       }
     },
     error => {
@@ -71,15 +65,6 @@ export class LoginComponent implements OnInit {
       return false;
     });
     return true;
-  }
-
-  validatePassword(result: any): boolean {
-    console.log(result.password);
-    if (this.user.value.password !== result.password) {
-      return false;
-    } else {
-      return true;
-    }
   }
 
   updateMessage(messages: string[]) {
